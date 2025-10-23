@@ -1,0 +1,330 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const post = {
+  title: 'Building a Modern Personal Website with Astro',
+  date: '2025-10-23',
+  readTime: '5 min read',
+  tags: ['Astro', 'Web Development', 'JavaScript'],
+  author: 'Chunjie Liu',
+};
+---
+
+<BaseLayout
+  title={`${post.title} - Chunjie Liu`}
+  description="Learn how to build a modern personal website using Astro's static site generation"
+>
+  <div class='container'>
+    <article class='blog-post fade-in-up'>
+      <header class='post-header card'>
+        <div class='post-meta'>
+          <time class='post-date'
+            >{
+              new Date(post.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })
+            }</time
+          >
+          <span class='post-read-time'>{post.readTime}</span>
+        </div>
+
+        <h1 class='post-title'>{post.title}</h1>
+
+        <div class='post-tags'>
+          {post.tags.map((tag) => <span class='tag'>{tag}</span>)}
+        </div>
+
+        <div class='author-info'>
+          <span>By {post.author}</span>
+        </div>
+      </header>
+
+      <div class='post-content card'>
+        <p>
+          When I decided to rebuild my personal website, I wanted something that
+          was fast, modern, and easy to maintain. After exploring various
+          options, I chose Astro for its unique approach to static site
+          generation and its excellent developer experience.
+        </p>
+
+        <h2>Why Astro?</h2>
+        <p>
+          Astro stands out from other static site generators for several
+          reasons:
+        </p>
+        <ul>
+          <li>
+            <strong>Zero JavaScript by default:</strong> Astro ships zero JavaScript
+            to the client by default, making sites incredibly fast.
+          </li>
+          <li>
+            <strong>Component Islands:</strong> You can add interactive components
+            only where needed, keeping the rest of your site static.
+          </li>
+          <li>
+            <strong>Framework agnostic:</strong> Use React, Vue, Svelte, or any other
+            framework components within the same project.
+          </li>
+          <li>
+            <strong>Developer experience:</strong> Great tooling, TypeScript support,
+            and intuitive file-based routing.
+          </li>
+        </ul>
+
+        <h2>Getting Started</h2>
+        <p>
+          Setting up an Astro project is straightforward. You can start with
+          their CLI tool:
+        </p>
+        <pre><code>npm create astro@latest my-website</code></pre>
+        <p>
+          This will scaffold a new Astro project with everything you need to get
+          started.
+        </p>
+
+        <h2>Project Structure</h2>
+        <p>A typical Astro project has a clean, intuitive structure:</p>
+        <ul>
+          <li>
+            <code>src/pages/</code> - Your website pages (supports .astro, .md, .js
+            files)
+          </li>
+          <li><code>src/layouts/</code> - Reusable layout components</li>
+          <li><code>src/components/</code> - UI components</li>
+          <li><code>public/</code> - Static assets</li>
+        </ul>
+
+        <h2>Key Features I Used</h2>
+        <p>For this website, I leveraged several Astro features:</p>
+
+        <h3>Layout Components</h3>
+        <p>
+          I created a base layout that includes the navigation, footer, and
+          common meta tags. This ensures consistency across all pages while
+          keeping the code DRY.
+        </p>
+
+        <h3>Static Site Generation</h3>
+        <p>
+          All pages are pre-rendered at build time, resulting in lightning-fast
+          loading speeds and excellent SEO performance.
+        </p>
+
+        <h3>TypeScript Support</h3>
+        <p>
+          Astro has excellent TypeScript support out of the box, which helps
+          catch errors early and improves the development experience.
+        </p>
+
+        <h2>Performance Benefits</h2>
+        <p>
+          The performance benefits of using Astro are immediately noticeable:
+        </p>
+        <ul>
+          <li>Near-instant page loads due to pre-rendered HTML</li>
+          <li>Minimal JavaScript bundle sizes</li>
+          <li>Excellent Core Web Vitals scores</li>
+          <li>SEO-friendly static HTML</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>
+          Building this website with Astro has been a great experience. The
+          framework strikes an excellent balance between simplicity and power,
+          making it perfect for personal websites, blogs, and even more complex
+          projects.
+        </p>
+        <p>
+          If you're considering building a new website or rebuilding an existing
+          one, I highly recommend giving Astro a try. Its focus on performance,
+          developer experience, and flexibility makes it a compelling choice for
+          modern web development.
+        </p>
+      </div>
+
+      <footer class='post-footer card'>
+        <div class='post-navigation'>
+          <a href='/blog' class='nav-link'>← Back to Blog</a>
+          <div class='share-buttons'>
+            <span>Share this post:</span>
+            <a href='#' class='share-button'>Twitter</a>
+            <a href='#' class='share-button'>LinkedIn</a>
+          </div>
+        </div>
+      </footer>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .blog-post {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .post-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .post-meta {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .post-title {
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .post-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .tag {
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .author-info {
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+  }
+
+  .post-content {
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .post-content h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.95);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0.5rem;
+  }
+
+  .post-content h3 {
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .post-content ul,
+  .post-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+  }
+
+  .post-content li {
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .post-content code {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .post-content pre {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .post-content pre code {
+    background: none;
+    padding: 0;
+  }
+
+  .post-footer {
+    margin-top: 3rem;
+  }
+
+  .post-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-weight: 600;
+    transition:
+      color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: #fff;
+    transform: translateX(-5px);
+  }
+
+  .share-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .share-buttons span {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+  }
+
+  .share-button {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+  }
+
+  .share-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .post-meta {
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .post-navigation {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .share-buttons {
+      align-self: stretch;
+      justify-content: center;
+    }
+  }
+</style>

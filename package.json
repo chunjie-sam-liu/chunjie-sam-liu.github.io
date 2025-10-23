@@ -1,0 +1,30 @@
+{
+  "name": "chunjie-sam-liu.github.io",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chunjie-sam-liu/chunjie-sam-liu.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chunjie-sam-liu/chunjie-sam-liu.github.io/issues"
+  },
+  "homepage": "https://github.com/chunjie-sam-liu/chunjie-sam-liu.github.io#readme",
+  "description": "",
+  "dependencies": {
+    "@astrojs/node": "^9.5.0",
+    "@types/node": "^24.9.1",
+    "astro": "^5.15.1",
+    "typescript": "^5.9.3"
+  }
+}

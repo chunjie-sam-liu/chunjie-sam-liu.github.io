@@ -1,0 +1,59 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Personal website of Chunjie Liu' } = Astro.props;
+---
+
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='description' content={description} />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
+    <title>{title}</title>
+    <link rel='stylesheet' href='/src/styles/global.css' />
+  </head>
+  <body>
+    <nav class='navbar'>
+      <div class='nav-container'>
+        <a href='/' class='nav-brand'>Chunjie Liu</a>
+        <ul class='nav-links'>
+          <li><a href='/'>Home</a></li>
+          <li><a href='/about'>About</a></li>
+          <li><a href='/projects'>Projects</a></li>
+          <li><a href='/blog'>Blog</a></li>
+          <li><a href='/contact'>Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class='footer'>
+      <div class='footer-container'>
+        <p>
+          &copy; {new Date().getFullYear()} Chunjie Liu. All rights reserved.
+        </p>
+        <div class='social-links'>
+          <a
+            href='https://github.com/chunjie-sam-liu'
+            target='_blank'
+            rel='noopener noreferrer'>GitHub</a
+          >
+          <a
+            href='https://linkedin.com/in/your-profile'
+            target='_blank'
+            rel='noopener noreferrer'>LinkedIn</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

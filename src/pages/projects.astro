@@ -1,0 +1,264 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Sample project data - replace with your actual projects
+const projects = [
+  {
+    title: 'Personal Website',
+    description:
+      'A modern, responsive personal website built with Astro, featuring a blog, portfolio, and contact sections.',
+    technologies: ['Astro', 'TypeScript', 'CSS', 'JavaScript'],
+    github: 'https://github.com/chunjie-sam-liu/chunjie-sam-liu.github.io',
+    demo: 'https://chunjie-sam-liu.github.io',
+    status: 'Live',
+  },
+  {
+    title: 'Data Visualization Tool',
+    description:
+      'An interactive data visualization tool for exploring complex datasets with multiple chart types and filtering options.',
+    technologies: ['React', 'D3.js', 'Node.js', 'MongoDB'],
+    github: '#',
+    demo: '#',
+    status: 'In Development',
+  },
+  {
+    title: 'Research Project',
+    description:
+      'A comprehensive research project exploring machine learning applications in data analysis and pattern recognition.',
+    technologies: ['Python', 'Pandas', 'Scikit-learn', 'Jupyter'],
+    github: '#',
+    demo: '#',
+    status: 'Completed',
+  },
+  {
+    title: 'Open Source Contribution',
+    description:
+      'Contributions to various open source projects, including bug fixes, feature additions, and documentation improvements.',
+    technologies: ['Various', 'JavaScript', 'Python', 'Documentation'],
+    github: '#',
+    demo: '#',
+    status: 'Ongoing',
+  },
+];
+---
+
+<BaseLayout
+  title='Projects - Chunjie Liu'
+  description="Explore Chunjie Liu's portfolio of projects and contributions"
+>
+  <div class='container'>
+    <section class='projects-hero fade-in-up'>
+      <div class='card'>
+        <h1>My Projects</h1>
+        <p class='lead'>
+          Here's a collection of projects I've worked on, ranging from personal
+          experiments to professional applications and open source
+          contributions.
+        </p>
+      </div>
+    </section>
+
+    <section class='projects-grid'>
+      <div class='grid grid-2'>
+        {
+          projects.map((project, index) => (
+            <div
+              class='project-card card'
+              style={`animation-delay: ${index * 0.1}s`}
+            >
+              <div class='project-header'>
+                <h3>{project.title}</h3>
+                <span
+                  class={`status status-${project.status.toLowerCase().replace(' ', '-')}`}
+                >
+                  {project.status}
+                </span>
+              </div>
+
+              <p class='project-description'>{project.description}</p>
+
+              <div class='project-tech'>
+                <h4>Technologies:</h4>
+                <div class='tech-tags'>
+                  {project.technologies.map((tech) => (
+                    <span class='tech-tag'>{tech}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div class='project-links'>
+                {project.github !== '#' && (
+                  <a
+                    href={project.github}
+                    class='btn'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    View Code
+                  </a>
+                )}
+                {project.demo !== '#' && (
+                  <a
+                    href={project.demo}
+                    class='btn btn-outline'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
+                    Live Demo
+                  </a>
+                )}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class='project-cta'>
+      <div class='card text-center'>
+        <h2>Interested in Collaborating?</h2>
+        <p>
+          I'm always open to discussing new projects, creative ideas, or
+          opportunities to be part of your visions.
+        </p>
+        <a href='/contact' class='btn'>Get in Touch</a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .projects-hero {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .lead {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+
+  .projects-grid {
+    margin-bottom: 4rem;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    animation: fadeInUp 0.6s ease-out both;
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+
+  .project-header h3 {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.3rem;
+  }
+
+  .status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .status-live {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+
+  .status-in-development {
+    background: rgba(234, 179, 8, 0.2);
+    color: #eab308;
+    border: 1px solid rgba(234, 179, 8, 0.3);
+  }
+
+  .status-completed {
+    background: rgba(59, 130, 246, 0.2);
+    color: #3b82f6;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+  }
+
+  .status-ongoing {
+    background: rgba(168, 85, 247, 0.2);
+    color: #a855f7;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+  }
+
+  .project-description {
+    flex: 1;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .project-tech {
+    margin-bottom: 2rem;
+  }
+
+  .project-tech h4 {
+    margin-bottom: 0.8rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-tag {
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .tech-tag:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+    flex-wrap: wrap;
+  }
+
+  .project-cta {
+    text-align: center;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .project-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .project-links {
+      flex-direction: column;
+    }
+
+    .project-links .btn {
+      text-align: center;
+    }
+  }
+</style>
