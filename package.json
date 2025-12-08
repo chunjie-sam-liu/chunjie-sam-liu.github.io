@@ -24,7 +24,7 @@
   "dependencies": {
     "@astrojs/node": "^9.5.0",
     "@types/node": "^24.9.1",
-    "astro": "^5.15.1",
+    "astro": "^5.16.4",
     "typescript": "^5.9.3"
   }
 }
